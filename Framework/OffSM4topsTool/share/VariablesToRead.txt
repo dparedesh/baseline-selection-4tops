@@ -1,0 +1,12 @@
+int HF_SimpleClassification
+float HT_jets
+float mll
+float mtw
+int nBTags_DL1r_60
+int nBTags_DL1r_70
+int nBTags_DL1r_77
+int nBTags_DL1_77
+int nBTags_DL1r_85
+int nJets
+int nRCJets
+int lepFlavChannel

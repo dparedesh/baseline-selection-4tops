@@ -1,0 +1,16 @@
+HF_SimpleClassification
+HT_jets
+nBTags_DL1r_60
+nBTags_DL1r_70
+nBTags_DL1r_77
+nBTags_DL1r_85
+nBTags_DL1_77
+nJets
+pass_slep
+pass_dilep
+pass_triangle
+pass_sf_cut
+mll
+year
+nComb
+aveCandTopMass

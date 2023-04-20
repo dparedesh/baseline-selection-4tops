@@ -1,0 +1,354 @@
+################################################################################
+#                                                                              #
+# SELECTION CONFIGURATION                                                      #
+#                                                                              #
+# This is a TTHbbLeptonic configuration for the AnalysisTop utility top-xaod.  #
+#                                                                              #
+# - TTHbbLeptonic: http://cern.ch/go/m989                                      #
+# - top-xaod:      http://cern.ch/go/D8bk                                      #
+#                                                                              #
+################################################################################
+
+################################################################################
+#                                                                              #
+# PACKAGE LIBRARIES                                                            #
+#                                                                              #
+################################################################################
+
+LibraryNames libTopEventSelectionTools libTopEventReconstructionTools  libTTHbbLeptonic  libJetSubStructureUtils libSM4topsCommon libSM4topsSSML
+
+################################################################################
+#                                                                              #
+# OBJECT COLLECTIONS                                                           #
+#                                                                              #
+################################################################################
+
+ElectronCollectionName Electrons
+MuonCollectionName Muons
+TauCollectionName None
+PhotonCollectionName None
+METCollectionName MET_Reference_AntiKt4EMPFlow
+LooseMETCollectionName MET_Reference_AntiKt4EMPFlow
+
+JetCollectionName AntiKt4EMPFlowJets_BTagging201903
+
+## options for large-R jets
+LargeJetCollectionName AntiKt10LCTopoTrimmedPtFrac5SmallR20Jets
+LargeJetSubstructure None
+LargeRJESJMSConfig CombMass
+
+# Jet reclustering
+UseRCJets True
+RCJetPt 200000.0
+UseVarRCJets False
+UseRCJetSubstructure True
+
+OverlapRemovalProcedure BoostedSlidingDRMu
+OverlapRemovalLeptonDef Loose
+
+################################################################################
+#                                                                              #
+# TRUTH COLLECTIONS AND SETTINGS                                               #
+#                                                                              #
+################################################################################
+
+#TruthCollectionName None
+TruthCollectionName TruthParticles
+#TruthJetCollectionName None
+TruthJetCollectionName AntiKt4TruthWZJets
+TopPartonHistory False
+TruthBlockInfo False
+PDFInfo False
+#TopParticleLevel True
+MCGeneratorWeights Nominal
+NominalWeightNames " nominal ","nominal","Default","Weight","1001"," muR=0.10000E+01 muF=0.10000E+01 ",""," "," dyn=   3 muR=0.10000E+01 muF=0.10000E+01 "," mur=1 muf=1 "," dyn=  10 muR=0.10000E+01 muF=0.10000E+01 ","45"
+
+################################################################################
+#                                                                              #
+# OBJECT LOADER AND OBJECT SELECTIONS                                          #
+#                                                                              #
+################################################################################
+
+ObjectSelectionName SM4topsSSMLObjectLoader
+
+BTaggingWP DL1r:FixedCutBEff_60 DL1r:FixedCutBEff_70 DL1r:FixedCutBEff_77 DL1r:FixedCutBEff_85 DL1r:Continuous DL1:FixedCutBEff_60 DL1:FixedCutBEff_70 DL1:FixedCutBEff_77 DL1:FixedCutBEff_85 DL1:Continuous
+
+ElectronID TightLH
+ElectronIDLoose MediumLH
+MuonQuality Medium
+MuonQualityLoose Medium
+
+ElectronIsolation FCTight
+ElectronIsolationLoose None
+MuonIsolation FCTightTrackOnly
+MuonIsolationLoose None
+
+UseElectronChargeIDSelection True
+ElectronPt 28000
+ElectronPt 28000
+MuonPt 28000
+JetPt 25000
+LargeRJetPt 200000
+LargeRJetEta 2.0
+
+DoLoose Both
+DoTight False
+ApplyTightSFsInLooseTree True
+
+# For now: enables the dumping of the pre-scale values
+# In the future: online computation of the MM weights
+# FakesMMWeights True
+
+################################################################################
+#                                                                              #
+# EXPERIMENTAL SYSTEMATICS                                                     #
+#                                                                              #
+################################################################################
+
+Systematics AllSmallRJets,AllElectrons,AllMET,AllMuons
+JetUncertainties_NPModel CategoryReduction
+JetUncertainties_BunchSpacing 25ns
+JetJERSmearingModel Simple
+EgammaSystematicModel 1NP_v1
+LargeRJESUncertaintyConfig mass,Tau32WTA
+
+################################################################################
+#                                                                              #
+# OUTPUT                                                                       #
+#                                                                              #
+# This configuration uses event savers specialised for ttHbb.                  #
+#                                                                              #
+################################################################################
+
+OutputFilename output.root
+OutputFormat TTHbbLeptonicEventSaver
+OutputEvents SelectedEvents
+OutputFileSetAutoFlushZero True
+
+################################################################################
+#                                                                              #
+# PILEUP CONFIG                                                                #
+#                                                                              #
+################################################################################
+
+# MC16d pileup profile
+PRWConfigFiles_FS dev/AnalysisTop/PileupReweighting/user.iconnell.Top.PRW.MC16d.FS.v2/prw.merged.root
+PRWConfigFiles_AF dev/AnalysisTop/PileupReweighting/user.iconnell.Top.PRW.MC16d.AF.v2/prw.merged.root
+PRWCustomScaleFactor 1.0/1.03:1.0/0.99:1.0/1.07
+# full 2017 dataset (release 21, OflLumi-13TeV-010)
+PRWLumiCalcFiles GoodRunsLists/data17_13TeV/20180619/physics_25ns_Triggerno17e33prim.lumicalc.OflLumi-13TeV-010.root
+PRWActualMu_FS GoodRunsLists/data17_13TeV/20180619/physics_25ns_Triggerno17e33prim.actualMu.OflLumi-13TeV-010.root
+PRWActualMu_AF GoodRunsLists/data17_13TeV/20180619/physics_25ns_Triggerno17e33prim.actualMu.OflLumi-13TeV-010.root
+
+ ###############################################################################
+#                                                                             #
+# Meta-data                                                                   #
+#                                                                             #
+###############################################################################
+
+UseAodMetaData True
+# the latter shouldn't be necessary anymore with p3388/p3390 samples or newer
+# IsAFII False
+BTagCDIPath xAODBTaggingEfficiency/13TeV/2020-21-13TeV-MC16-CDI-2020-03-11_Sh228_v3.root
+
+###############################################################################
+#                                                                             #
+# Selections                                                                  #
+#                                                                             #
+###############################################################################
+
+########################
+### global trigger definition
+########################
+
+UseGlobalLeptonTriggerSF True
+
+GlobalTriggers 2015@2e12_lhloose_L12EM10VH,2mu10,mu18_mu8noL1,e17_lhloose_mu14,e7_lhmedium_mu24,e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose,mu50 2016@2e17_lhvloose_nod0,2mu14,mu22_mu8noL1,e17_lhloose_nod0_mu14,e7_lhmedium_nod0_mu24,e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0,mu50 2017@2e24_lhvloose_nod0,2mu14,mu22_mu8noL1,e17_lhloose_nod0_mu14,e7_lhmedium_nod0_mu24,e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0,mu50 2018@2e24_lhvloose_nod0,2e17_lhvloose_nod0_L12EM15VHI,2mu14,mu22_mu8noL1,e17_lhloose_nod0_mu14,e7_lhmedium_nod0_mu24,e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0,mu50
+GlobalTriggersLoose 2015@2e12_lhloose_L12EM10VH,2mu10,mu18_mu8noL1,e17_lhloose_mu14,e7_lhmedium_mu24,e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose,mu50 2016@2e17_lhvloose_nod0,2mu14,mu22_mu8noL1,e17_lhloose_nod0_mu14,e7_lhmedium_nod0_mu24,e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0,mu50 2017@2e24_lhvloose_nod0,2mu14,mu22_mu8noL1,e17_lhloose_nod0_mu14,e7_lhmedium_nod0_mu24,e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0,mu50 2018@2e24_lhvloose_nod0,2e17_lhvloose_nod0_L12EM15VHI,2mu14,mu22_mu8noL1,e17_lhloose_nod0_mu14,e7_lhmedium_nod0_mu24,e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0,mu50
+
+########################
+### basic selection with mandatory cuts for reco level
+########################
+
+SUB BASIC
+INITIAL
+GRL
+GOODCALO
+PRIVTX
+RECO_LEVEL
+TTHBBCREATEEVENT
+TTHBBEDM
+TTHBBLARGEJETEDM
+TTHBBTRUTHEDM
+TTBARREWEIGHTING
+LEPTONORDERING
+
+SUB DECO
+DECORATEELECTRONS
+DECORATEELECTRONSSSML
+DECORATEMUONS
+DECORATEEVENT
+DECORATETRUTH
+SM4TOPSSSMLEVENTDECORATOR
+LEPTONVARS
+SM4TOPSQGVAR
+
+########################
+### definition of the data periods
+### here just for historical reasons
+#######################
+
+SUB period_2015
+RUN_NUMBER >= 276262
+RUN_NUMBER <= 284484
+
+SUB period_2016
+RUN_NUMBER >= 297730
+RUN_NUMBER <= 311481
+
+SUB period_2017
+RUN_NUMBER >= 325713
+RUN_NUMBER <= 340453
+
+SUB period_2018
+RUN_NUMBER >= 348885
+RUN_NUMBER <= 360402
+
+#################################
+### Lepton categorisation
+#################################
+
+SUB TRIG_EE
+. BASIC
+GTRIGDEC 
+JETCLEAN LooseBad
+
+SUB TRIG_MUMU
+. BASIC
+GTRIGDEC
+JETCLEAN LooseBad
+
+SUB TRIG_EMU
+. BASIC
+GTRIGDEC
+JETCLEAN LooseBad
+
+SUB TRIG_EEM
+. BASIC
+GTRIGDEC
+JETCLEAN LooseBad
+
+SUB TRIG_EMM
+. BASIC
+GTRIGDEC
+JETCLEAN LooseBad
+
+SUB TRIG_ALL
+. BASIC
+GTRIGDEC 
+JETCLEAN LooseBad
+
+########################
+### standard selections
+########################
+
+SELECTION SSee
+. TRIG_EE
+SM4TOPSSSMLCHANNEL 1
+GTRIGMATCH 
+SM4TOPSSSMLSSOSDILEPSELECTOR 0 0
+SM4TOPSSSMLMLL > 15000
+SM4TOPSSSMLMLLWIN 81000 101000
+NOBADMUON
+. DECO
+SAVE
+
+SELECTION SSmm
+. TRIG_MUMU
+SM4TOPSSSMLCHANNEL 2
+GTRIGMATCH
+SM4TOPSSSMLSSOSDILEPSELECTOR 0 0
+NOBADMUON
+. DECO
+SAVE
+
+SELECTION SSem
+. TRIG_EMU
+SM4TOPSSSMLCHANNEL 3
+GTRIGMATCH
+SM4TOPSSSMLSSOSDILEPSELECTOR 0 0
+NOBADMUON
+. DECO
+SAVE
+
+SELECTION eee
+. TRIG_EE
+SM4TOPSSSMLCHANNEL 5
+GTRIGMATCH
+NOBADMUON
+. DECO
+SAVE
+
+SELECTION eem
+. TRIG_EEM
+SM4TOPSSSMLCHANNEL 6
+GTRIGMATCH
+NOBADMUON
+. DECO
+SAVE
+
+SELECTION emm
+. TRIG_EMM
+SM4TOPSSSMLCHANNEL 7
+GTRIGMATCH
+NOBADMUON
+. DECO
+SAVE
+
+SELECTION mmm
+. TRIG_MUMU
+SM4TOPSSSMLCHANNEL 8
+GTRIGMATCH
+NOBADMUON
+. DECO
+SAVE
+
+###################################
+### trilepton selections - Z veto
+###################################
+
+SELECTION eee_Zveto
+. TRIG_EE
+SM4TOPSSSMLCHANNEL 5
+GTRIGMATCH
+SM4TOPSSMLZVETO 81000 101000
+NOBADMUON
+. DECO
+SAVE
+
+SELECTION eem_Zveto
+. TRIG_EEM
+SM4TOPSSSMLCHANNEL 6
+GTRIGMATCH
+SM4TOPSSMLZVETO 81000 101000
+NOBADMUON
+. DECO
+SAVE
+
+SELECTION emm_Zveto
+. TRIG_EMM
+SM4TOPSSSMLCHANNEL 7
+GTRIGMATCH
+SM4TOPSSMLZVETO 81000 101000
+NOBADMUON
+. DECO
+SAVE
+
+SELECTION mmm_Zveto
+. TRIG_MUMU
+SM4TOPSSSMLCHANNEL 8
+GTRIGMATCH
+SM4TOPSSMLZVETO 81000 101000
+NOBADMUON
+. DECO
+SAVE

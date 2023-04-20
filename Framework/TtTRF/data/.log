@@ -1,0 +1,75 @@
+
+Processing study_extrap.C("mc_incl_5j6j")...
+In file included from input_line_10:1:
+In file included from /gpfs/atlas/gpanizzo/DataAnalysis/Release21/ljetsOS-framework/TTHbbAnalysis/TtTRF/data/study_extrap.C:1:
+/gpfs/atlas/gpanizzo/DataAnalysis/Release21/ljetsOS-framework/TTHbbAnalysis/TtTRF/data/./AtlasStyle.C:7:10: fatal error: 'AtlasStyle.h' file not found
+#include "AtlasStyle.h"
+         ^~~~~~~~~~~~~~
+/gpfs/atlas/gpanizzo/DataAnalysis/Release21/ljetsOS-framework/TTHbbAnalysis/TtTRF/data/./AtlasStyle.C:15:37: error: use of undeclared identifier 'AtlasStyle'
+  if ( atlasStyle==0 ) atlasStyle = AtlasStyle();
+                                    ^
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@farm050>
+Subject: Job 90552: <root -l -b -q study_extrap.C\(\"mc_incl_dilep\"\)> in cluster lsfts1 Exited
+
+Job <root -l -b -q study_extrap.C\(\"mc_incl_dilep\"\)> was submitted from host <farmui01> by user <panizzo> in cluster <lsfts1>.
+Job was executed on host(s) <farm050>, in queue <short>, as user <panizzo> in cluster <lsfts1>.
+</home/panizzo> was used as the home directory.
+</gpfs/atlas/gpanizzo/DataAnalysis/Release21/ljetsOS-framework/TTHbbAnalysis/TtTRF/data> was used as the working directory.
+Started at Wed Oct 10 08:52:15 2018
+Results reported at Wed Oct 10 08:52:16 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+root -l -b -q study_extrap.C\(\"mc_incl_dilep\"\)
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time   :      0.65 sec.
+    Max Memory :         8 MB
+    Max Swap   :        67 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) is above this job summary.
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@farm047>
+Subject: Job 90553: <root -l -b -q study_extrap.C\(\"mc_incl_5j6j\"\)> in cluster lsfts1 Exited
+
+Job <root -l -b -q study_extrap.C\(\"mc_incl_5j6j\"\)> was submitted from host <farmui01> by user <panizzo> in cluster <lsfts1>.
+Job was executed on host(s) <farm047>, in queue <short>, as user <panizzo> in cluster <lsfts1>.
+</home/panizzo> was used as the home directory.
+</gpfs/atlas/gpanizzo/DataAnalysis/Release21/ljetsOS-framework/TTHbbAnalysis/TtTRF/data> was used as the working directory.
+Started at Wed Oct 10 08:52:15 2018
+Results reported at Wed Oct 10 08:52:16 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+root -l -b -q study_extrap.C\(\"mc_incl_5j6j\"\)
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time   :      0.69 sec.
+    Max Memory :         8 MB
+    Max Swap   :        67 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) is above this job summary.
+

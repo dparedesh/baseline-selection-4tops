@@ -1,0 +1,18 @@
++ TTHbbAnalysis/CustomTRF
++ TTHbbAnalysis/MCFakes
++ TTHbbAnalysis/MVAVariables
++ TTHbbAnalysis/NNLOReweighter
++ TTHbbAnalysis/TRFFakes
++ TTHbbAnalysis/TTHbbConfiguration
++ TTHbbAnalysis/TTHbbObjects
++ TTHbbAnalysis/TTHbbToolManager
++ TTHbbAnalysis/TTHbbTtbarCorrections
+# To add offline dilepton variable calculations
++ TTHbbAnalysis/OfflineDileptonVariables
++ TTHbbAnalysis/OfflineTTHbb
++ TTHbbAnalysis/TTHbbClassification
++ TTHbbAnalysis/TTHbbMVAInterfaces
++ TTHbbAnalysis/TTHbbTruthHelper
++ OffSM4topsTool
++ TtTRF
+- .*

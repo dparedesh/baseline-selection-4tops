@@ -1,0 +1,2 @@
+float GenFiltHT
+int TopHeavyFlavorFilterFlag

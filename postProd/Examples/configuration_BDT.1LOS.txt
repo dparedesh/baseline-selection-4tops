@@ -1,0 +1,81 @@
+#################################################
+#    Configuration file for sm4t-offline          #
+##################################################
+# Notes:                                         #
+#             				         #
+# Hash demarks the start of a comment            #
+# All settings are "CONFIG param"                #
+# Settings can be altered with command line args #
+#  -o CONFIG param                               #
+# All settings need to be predefined in the code #
+##################################################
+
+### Where to save everything
+OutputDirectory test
+SampleName ttbar
+CreateOutputFileFirst true
+
+### Sample options
+SampleType MC
+UseLargeJets false
+CustomObjects rcjet
+
+### Which systematics to save, provide a full list
+Systematics nominal_Loose
+### Or provide a file
+SystematicsFromFile false
+SystematicsFile None
+
+### Calculate a normalisation weight from
+### totalEventsWeighted,Cutflow or none
+Normalisation Cutflow
+
+### Provide a file to configure the weights to save
+WeightsFile weights_BDT.1LOS.txt
+
+### Can choose to provide a list of variables to decorate onto the event
+VariableListToDecorate VariablesToRead_BDT.1LOS.txt
+
+### Save all variables decorated onto the event
+SaveDefaultVariables true
+SaveAllDecorations false
+SaveAllObjectDecorations false
+VariablesToSaveFile VariablesToSave_BDT.1LOS.txt
+ObjectDecorationToSaveFile DecoToSave_BDT.1LOS.txt
+
+# SaveAllDecorations true
+# SaveAllObjectDecorations true
+
+### Define the regions of the form Name:"cut expression",Name2:"cut expression"
+Regions 2los5j:"(ee_MV2c10 || ee_DL1 || mumu_MV2c10 || mumu_DL1 || emu_MV2c10 || emu_DL1 ) && nJets == 5",2los6j:"(ee_MV2c10 || ee_DL1 || mumu_MV2c10 || mumu_DL1 || emu_MV2c10 || emu_DL1 ) && nJets == 6",2los7j:"(ee_MV2c10 || ee_DL1 || mumu_MV2c10 || mumu_DL1 || emu_MV2c10 || emu_DL1 ) && nJets == 7",2losge8j:"(ee_MV2c10 || ee_DL1 || mumu_MV2c10 || mumu_DL1 || emu_MV2c10 || emu_DL1 ) && nJets >= 8",ljets7j:"(ejets_MV2c10 || ejets_DL1 || mujets_MV2c10 || mujets_DL1 ) && nJets == 7",ljets8j:"(ejets_MV2c10 || ejets_DL1 || mujets_MV2c10 || mujets_DL1 ) && nJets == 8",ljets9j:"(ejets_MV2c10 || ejets_DL1 || mujets_MV2c10 || mujets_DL1 ) && nJets == 9",ljetsge10j:"(ejets_MV2c10 || ejets_DL1 || mujets_MV2c10 || mujets_DL1 ) && nJets >= 10"
+
+##################################################
+# TOOL configuration				 #
+#      						 #
+# Notes:					 #
+# 						 #
+# Tools in ToolManager have a given setting key  #
+# Set key to true to run the tool                #
+# Additional options may also be set here        #
+##################################################
+
+Dictionaries OffSM4topsTool
+
+MVAVariables.TurnOn true
+MVAVariables.bTagWPs MV2c10_70
+
+Add1LOSVar.TurnOn true
+Add1LOSVar.MeVToGeV false
+Add1LOSVar.AddHigherLevelVariables true
+
+AddBDT1LOS.TurnOn true
+
+
+AddBDT1LOS.XMLpath_1l /eos/atlas/atlascerngroupdisk/phys-top/4tops2019/BDTXMLs/BDT_050919_1l_set13
+AddBDT1LOS.Vars_1l HT_all,jet_pt_0_:jet_pt[0],nJets/I,Centrality_all,dRjj_Avg,dRbb_MindR_MV2c10_70,dRbl_MindR_MV2c10_70,Mjjj_MindR:Mjjj_MindR_new,Mbbb_Avg_MV2c10_70,Mbb_MinM_MV2c10_70,nRCJetsM100/I,Sum__rcjet_d12_:Sum$(rcjet_d12),Sum__rcjet_d23_:Sum$(rcjet_d23),mtw,met_met,Sum__jet_pcb_MV2c10_btag_ordered_T__Iteration__6__:Sum$(jet_pcb_MV2c10_btag_ordered*(Iteration$<6))
+AddBDT1LOS.XMLpath_2l /eos/atlas/atlascerngroupdisk/phys-top/4tops2019/BDTXMLs/BDT_050919_2l_set13
+AddBDT1LOS.Vars_2l HT_all,jet_pt_0_:jet_pt[0],nJets/I,Centrality_all,dRjj_Avg,dRbb_MindR_MV2c10_70,dRbl_MindR_MV2c10_70,Mjjj_MindR:Mjjj_MindR_new,Mbbb_Avg_MV2c10_70,Mbb_MinM_MV2c10_70,nRCJetsM100/I,Sum__rcjet_d12_:Sum$(rcjet_d12),Sum__rcjet_d23_:Sum$(rcjet_d23),met_met,Sum__jet_pcb_MV2c10_btag_ordered_T__Iteration__6__:Sum$(jet_pcb_MV2c10_btag_ordered*(Iteration$<6))
+
+
+
+# NEvents 1000

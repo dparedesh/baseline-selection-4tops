@@ -1,0 +1,14 @@
+jet float jet_DL1r
+jet int jet_tagWeightBin_DL1r_Continuous
+jet float jet_pt_btag_ordered
+jet float jet_eta_btag_ordered
+jet float jet_phi_btag_ordered
+jet float jet_e_btag_ordered
+jet float jet_DL1r_btag_ordered
+jet int jet_pcb_DL1r_btag_ordered
+jet float jet_discrete_DL1r_btag_ordered
+jet int jet_truthflav
+rcjet float rcjet_m
+rcjet float rcjet_d12
+rcjet float rcjet_d23
+jet float jet_qg_BDT

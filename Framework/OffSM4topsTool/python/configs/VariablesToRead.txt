@@ -1,0 +1,6 @@
+float HT_jets
+int nBTags_DL1r_60
+int nBTags_DL1r_70
+int nBTags_DL1r_77
+int nBTags_DL1r_85
+int nJets

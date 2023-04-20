@@ -1,0 +1,88 @@
+##################################################
+#    Configuration file for ttH-offline          #
+##################################################
+# Notes:                                         #
+#             				         #
+# Hash demarks the start of a comment            #
+# All settings are "CONFIG param"                #
+# Settings can be altered with command line args #
+#  -o CONFIG param                               #
+# All settings need to be predefined in the code #
+##################################################
+
+### Reduce memory consumption
+CreateOutputFileFirst true
+
+### SM4t dictionary
+Dictionaries OffSM4topsTool
+
+###Where to save everything
+OutputDirectory /eos/infnts/atlas/gpanizzo/SM4t_L2/common-framework
+SampleName ttbar_pyt8_hdamp258
+
+###Sample options
+SampleType MC
+UseLargeJets false
+
+###Which systematics to save, provide a full list
+Systematics nominal_Loose
+###Or provide a file
+SystematicsFromFile false
+SystematicsFile None
+
+###Calculate a normalisation weight from
+###totalEventsWeighted,Cutflow or none
+Normalisation Cutflow
+
+###Provide a file to configure the weights to save
+WeightsFile weights.ttTRF.txt
+
+###Can choose to provide a list of variables to decorate onto the event
+VariableListToDecorate VariablesToRead.txt
+
+###Save all variables decorated onto the event
+SaveAllDecorations some
+###Otherwise save variables listed in file
+VariablesToSaveFile VariablesToSave.ttTRF.txt
+
+ SaveDefaultVariables jet_pt,jet_eta,met_met,mcChannelNumber
+#  Funtionality not yet ported in new common-framework
+#  SaveAllObjectDecorations jets_is_btagged,jets_dRjmin
+ SaveAllObjectDecorations true
+
+###Define the regions of the form Name:"cut expression",Name2:"cut expression"
+Regions ljets4j:"{pass_triangle} nJets == 4",ljets5j:"{pass_triangle} nJets == 5",ljets6j:"{pass_triangle} nJets == 6",ljets7j:"{pass_triangle} nJets == 7",ljets8j:"{pass_triangle} nJets == 8",ljets9j:"{pass_triangle} nJets == 9",ljetsge10j:"{pass_triangle} nJets > 9"
+
+BTaggingWP DL1r_77DL1r_70DL1r_85DL
+
+##################################################
+# TOOL configuration				 #
+#      						 #
+# Notes:					 #
+# 						 #
+# Tools in ToolManager have a given setting key  #
+# Set key to true to run the tool                #
+# Additional options may also be set here        #
+##################################################
+
+#use true to turn a tool on
+#MyTool true
+#AdditionalToolOption this
+
+#Turn on the MVAVariables tool used for variable calculations
+MVAVariables.TurnOn false
+#Which working points to enable
+MVAVariables.bTagWPs DL1r_77
+
+Add1LOSVar true
+Add1LOSVar.MeVToGeV true
+
+# ----------------------------------------- #
+# TtTRF.Path /eos/atlas/atlascerngroupdisk/phys-top/4tops/ljetsOS/DDbkgEstimate/ttTRF/data
+ TtTRF.Path ../Framework/TtTRF/data
+ TtTRF.Selection 5j
+ TtTRF.Splitting split4b
+ TtTRF.Parametrisation ptdRjNjdist
+# ----------------------------------------- #
+
+

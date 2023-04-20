@@ -1,0 +1,92 @@
+float HT_jets
+float HT_all
+float mll
+float mtw
+float mJSum
+
+int nBTags_DL1r_60
+int nBTags_DL1r_70
+int nBTags_DL1r_77
+int nBTags_DL1r_85
+int nElectrons
+int nMuons
+int nJets
+int nRCJets
+int nRCJetsM100
+int lepFlavChannel
+int HF_SimpleClassification
+int TopHeavyFlavorFilterFlag
+int truth_top_dilep_filter
+float GenFiltHT
+float HFClassification_q1_eta
+float HFClassification_q1_m
+float HFClassification_q1_phi
+float HFClassification_q1_pt
+float HFClassification_q2_eta
+float HFClassification_q2_m
+float HFClassification_q2_phi
+float HFClassification_q2_pt
+float HFClassification_qq_dr
+float HFClassification_qq_ht
+float HFClassification_qq_m
+float HFClassification_qq_pt
+int HF_Classification
+int HF_ClassificationGhost
+int HF_SimpleClassification
+int HF_SimpleClassificationGhost
+
+char ejets
+char mujets
+char ee
+char mumu
+char emu
+
+electron char el_isTight
+electron char el_trigMatch_HLT_e120_lhloose
+electron char el_trigMatch_HLT_e24_lhmedium_L1EM20VH
+electron char el_trigMatch_HLT_e60_lhmedium
+electron char el_trigMatch_HLT_e140_lhloose_nod0
+electron char el_trigMatch_HLT_e60_lhmedium_nod0
+electron char el_trigMatch_HLT_e26_lhtight_nod0_ivarloose
+
+muon char mu_isTight
+muon char mu_trigMatch_HLT_mu20_iloose_L1MU15
+muon char mu_trigMatch_HLT_mu26_ivarmedium
+muon char mu_trigMatch_HLT_mu50
+
+rcjet float rcjet_d12
+rcjet float rcjet_d23
+
+jet float jet_passfjvt
+jet float jet_DL1r
+jet char jet_isbtagged_DL1r_60
+jet char jet_isbtagged_DL1r_70
+jet char jet_isbtagged_DL1r_77
+jet char jet_isbtagged_DL1r_85
+jet int jet_tagWeightBin
+jet int jet_tagWeightBin_DL1r_Continuous
+jet int jet_truthflav
+jet int jet_truthPartonLabel
+jet int jet_truthflavExtended
+
+jet float jet_N90Constituents
+jet float jet_Width
+jet float jet_WidthPhi
+jet float jet_Charge
+jet int jet_nTrkPt500
+jet int jet_nTrkPt1000
+jet float jet_TrackWidthPt500
+jet float jet_TrackWidthPt1000
+jet int jet_qg_NTracks
+jet float jet_qg_TracksWidth
+jet float jet_qg_TracksC1
+jet int jet_qg_truth_nCharged
+jet float jet_qg_truth_pt
+jet float jet_qg_truth_eta
+jet float jet_qg_BDT
+jet int jet_isQuark_WPq50
+jet int jet_isQuark_WPg50
+jet int jet_isQuark_WPq80
+jet int jet_isQuark_WPg80
+jet int jet_isQuark_WPq90
+jet int jet_isQuark_WPg90    

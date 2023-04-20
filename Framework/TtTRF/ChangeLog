@@ -1,0 +1,5 @@
+2018-10-26 Giancarlo Panizzo <giancarlo.panizzo@cern.ch>
+    * Fixing bug introduced when extracting efficiencies in data
+    * Cleaned a bit the way the script Get_ttTRF_2018  can be debugged
+    * Fixed bug in computing dRj_bulk efficiencies
+

@@ -1,0 +1,85 @@
+#################################################
+#    Configuration file for sm4t-offline          #
+##################################################
+# Notes:                                         #
+#             				         #
+# Hash demarks the start of a comment            #
+# All settings are "CONFIG param"                #
+# Settings can be altered with command line args #
+#  -o CONFIG param                               #
+# All settings need to be predefined in the code #
+##################################################
+
+### Where to save everything
+OutputDirectory BSM4t-2121200-1LOS-v1
+SampleName ttbar
+CreateOutputFileFirst true
+SaveSumOfWeightsTree true
+
+### Sample options
+SampleType MC
+UseLargeJets false
+UseRCJets true
+
+### Which systematics to save, provide a full list
+Systematics nominal_Loose
+### Or provide a file
+SystematicsFromFile false
+SystematicsFile None
+
+### Calculate a normalisation weight from
+### totalEventsWeighted,Cutflow or none
+Normalisation None
+
+### Provide a file to configure the weights to save
+WeightsFile weights_grid.1LOS.txt
+
+### Can choose to provide a list of variables to decorate onto the event
+VariableListToDecorate VariablesToRead_grid.1LOS.txt
+
+### Save all variables decorated onto the event
+SaveDefaultVariables true
+SaveAllDecorations false
+SaveAllObjectDecorations false
+VariablesToSaveFile VariablesToSave_grid.1LOS.txt
+ObjectDecorationToSaveFile DecoToSave_grid.1LOS.txt
+UseTTHbbVariables false
+
+# SaveAllDecorations true
+# SaveAllObjectDecorations true
+
+### Define the regions of the form Name:"cut expression",Name2:"cut expression"
+Regions os2l5j:"(ee||mumu||emu) && nJets == 5",os2l6j:"(ee||mumu||emu) && nJets == 6",os2l7j:"(ee||mumu||emu) && nJets == 7",os2lge8j:"(ee||mumu||emu) && nJets >= 8",ljets7j:"(ejets||mujets) && nJets == 7",ljets8j:"(ejets||mujets) && nJets == 8",ljets9j:"(ejets||mujets) && nJets == 9",ljetsge10j:"(ejets||mujets) && nJets >= 10"
+
+# Regions ljetsge10j:"(ejets||mujets) && nJets >= 10"
+
+
+##################################################
+# TOOL configuration				 #
+#      						 #
+# Notes:					 #
+# 						 #
+# Tools in ToolManager have a given setting key  #
+# Set key to true to run the tool                #
+# Additional options may also be set here        #
+##################################################
+
+Dictionaries OffSM4topsTool
+
+MVAVariables.TurnOn true
+MVAVariables.bTagWPs DL1r_70
+
+Add1LOSVar.TurnOn true
+Add1LOSVar.MeVToGeV false
+Add1LOSVar.AddHigherLevelVariables true
+
+AddBDT1LOS.TurnOn true
+
+AddBDT1LOS.XMLpath_1l 
+AddBDT1LOS.XMLpath_2l 
+AddBDT1LOS.Vars_1l HT_all,jet_pt_0_:jet_pt[0],nJets/I,Centrality_all,dRjj_Avg,dRbb_MindR_MV2c10_70,dRbl_MindR_MV2c10_70,Mjjj_MindR:Mjjj_MindR_new,Mbbb_Avg_MV2c10_70,Mbb_MinM_MV2c10_70,nRCJetsM100/I,Sum__rcjet_d12_:Sum$(rcjet_d12),Sum__rcjet_d23_:Sum$(rcjet_d23),mtw,met_met,Sum__jet_pcb_MV2c10_btag_ordered_T__Iteration__6__:Sum$(jet_pcb_MV2c10_btag_ordered*(Iteration$<6))
+AddBDT1LOS.Vars_2l HT_all,jet_pt_0_:jet_pt[0],nJets/I,Centrality_all,dRjj_Avg,dRbb_MindR_MV2c10_70,dRbl_MindR_MV2c10_70,Mjjj_MindR:Mjjj_MindR_new,Mbbb_Avg_MV2c10_70,Mbb_MinM_MV2c10_70,nRCJetsM100/I,Sum__rcjet_d12_:Sum$(rcjet_d12),Sum__rcjet_d23_:Sum$(rcjet_d23),met_met,Sum__jet_pcb_MV2c10_btag_ordered_T__Iteration__6__:Sum$(jet_pcb_MV2c10_btag_ordered*(Iteration$<6)) 
+
+CommonTools.TurnOn false
+
+# NEvents 1000

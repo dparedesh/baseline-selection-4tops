@@ -1,0 +1,66 @@
+##################################################
+#    Configuration file for ttH-offline          #
+##################################################
+# Notes:                                         #
+#             				         #
+# Hash demarks the start of a comment            #
+# All settings are "CONFIG param"                #
+# Settings can be altered with command line args #
+#  -o CONFIG param                               #
+# All settings need to be predefined in the code #
+##################################################
+
+#NEvents 10000
+
+### SM4t dictionary
+Dictionaries OffSM4topsTool
+
+###Where to save everything
+OutputDirectory test
+SampleName ttbar_powpyt8
+
+###Sample options
+SampleType MC
+UseLargeJets false
+
+###Which systematics to save, provide a full list
+Systematics nominal_Loose
+###Or provide a file
+SystematicsFromFile false
+SystematicsFile None
+
+###Calculate a normalisation weight from
+###totalEventsWeighted,Cutflow or none
+Normalisation totalEventsWeighted
+
+###Provide a file to configure the weights to save
+WeightsFile weights.txt
+
+###Can choose to provide a list of variables to decorate onto the event
+VariableListToDecorate VariablesToRead.txt
+
+###Save all variables decorated onto the event
+SaveAllObjectDecorations true
+###Otherwise save variables listed in file
+#VariablesToSaveFile VariablesToSave.txt
+
+CreateOutputFileFirst true
+
+SaveDefaultVariables mcChannelNumber,runNumber,eventNumber
+
+###Define the regions of the form Name:"cut expression",Name2:"cut expression"
+###Regions ljets5j:"nJets == 5",ljets6j:"nJets == 6",ljets7j:"nJets == 7",ljets8j:"nJets == 8",ljets9j:"nJets == 9",ljetsge10j:"nJets > 9"
+
+Regions 2lss3lge1
+
+##################################################
+# TOOL configuration				 #
+#      						 #
+# Notes:					 #
+# 						 #
+# Tools in ToolManager have a given setting key  #
+# Set key to true to run the tool                #
+# Additional options may also be set here        #
+##################################################
+
+Dictionaries OffSM4topsTool

@@ -1,0 +1,66 @@
+##################################################
+#    Configuration file for ttH-offline          #
+##################################################
+# Notes:                                         #
+#             				         #
+# Hash demarks the start of a comment            #
+# All settings are "CONFIG param"                #
+# Settings can be altered with command line args #
+#  -o CONFIG param                               #
+# All settings need to be predefined in the code #
+##################################################
+
+###Where to save everything
+OutputDirectory test_dir
+SampleName 4tops
+
+###Sample options
+SampleType MC
+UseLargeJets false
+
+###Which systematics to save, provide a full list
+Systematics nominal_Loose
+###Or provide a file
+SystematicsFromFile false
+SystematicsFile None
+
+###Calculate a normalisation weight from
+###totalEventsWeighted,Cutflow or none
+Normalisation totalEventsWeighted
+
+###Provide a file to configure the weights to save
+WeightsFile weights.txt
+
+###Can choose to provide a list of variables to decorate onto the event
+VariableListToDecorate VariablesToRead.txt
+
+###Save all variables decorated onto the event
+SaveAllDecorations true
+###Otherwise save variables listed in file
+VariablesToSaveFile VariablesToSave.txt
+
+SaveDefaultVariables mcChannelNumber,jet_pt,jet_eta,jet_phi,jet_e,jet_btag_weight,jet_jvt
+
+###Define the regions of the form Name:"cut expression",Name2:"cut expression"
+Regions 2j:"nJets == 2",3j:"nJets == 3",4j:"nJets == 4",5j:"nJets == 5",6j:"nJets == 6",7j:"nJets == 7",8j:"nJets == 8",9j:"nJets == 9",ge10j:"nJets > 9"
+
+##################################################
+# TOOL configuration				 #
+#      						 #
+# Notes:					 #
+# 						 #
+# Tools in ToolManager have a given setting key  #
+# Set key to true to run the tool                #
+# Additional options may also be set here        #
+##################################################
+
+## use true to turn a tool on
+# MyTool true
+
+## Example of including Add1LOSVar and AddSSMLVar
+
+# Add1LOSVar.TurnOn true
+# Add1LOSVar.MeVToGeV true
+
+# AddSSMLVar.TurnOn true
+

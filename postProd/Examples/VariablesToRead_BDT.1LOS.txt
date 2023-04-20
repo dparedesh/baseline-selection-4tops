@@ -1,0 +1,73 @@
+float HT_jets
+float HT_all
+float mll
+float mtw
+float mJSum
+
+int nBTags_MV2c10_60
+int nBTags_MV2c10_70
+int nBTags_MV2c10_77
+int nBTags_MV2c10_85
+int nBTags_DL1_60
+int nBTags_DL1_70
+int nBTags_DL1_77
+int nBTags_DL1_85
+int nElectrons
+int nMuons
+int nJets
+int nRCJets
+int nRCJetsM100
+int lepFlavChannel
+int HF_SimpleClassification
+int TopHeavyFlavorFilterFlag
+float truth_ht
+int truth_top_dilep_filter
+float GenFiltHT
+
+char ejets_MV2c10
+char mujets_MV2c10
+char ee_MV2c10
+char mumu_MV2c10
+char emu_MV2c10
+
+electron char el_isTight
+electron char el_trigMatch_HLT_e120_lhloose
+electron char el_trigMatch_HLT_e24_lhmedium_L1EM20VH
+electron char el_trigMatch_HLT_e60_lhmedium
+electron char el_trigMatch_HLT_e140_lhloose_nod0
+electron char el_trigMatch_HLT_e60_lhmedium_nod0
+electron char el_trigMatch_HLT_e26_lhtight_nod0_ivarloose
+
+muon char mu_isTight
+muon char mu_trigMatch_HLT_mu20_iloose_L1MU15
+muon char mu_trigMatch_HLT_mu26_ivarmedium
+muon char mu_trigMatch_HLT_mu50
+
+rcjet float rcjet_pt
+rcjet float rcjet_eta
+rcjet float rcjet_phi
+rcjet float rcjet_e
+rcjet float rcjet_d12
+rcjet float rcjet_d23
+
+jet float jet_passfjvt
+jet float jet_DL1
+jet char jet_isbtagged_MV2c10_60
+jet char jet_isbtagged_MV2c10_70
+jet char jet_isbtagged_MV2c10_77
+jet char jet_isbtagged_MV2c10_85
+jet char jet_isbtagged_DL1_60
+jet char jet_isbtagged_DL1_70
+jet char jet_isbtagged_DL1_77
+jet char jet_isbtagged_DL1_85
+jet int jet_nTrkPt1000
+jet int jet_nTrkPt500
+jet int jet_tagWeightBin
+jet int jet_tagWeightBin_DL1_Continuous
+jet int jet_tagWeightBin_MV2c10_Continuous
+jet float jet_Charge
+jet float jet_N90Constituents
+jet float jet_TrackWidthPt1000
+jet float jet_TrackWidthPt500
+jet float jet_Width
+jet float jet_WidthPhi

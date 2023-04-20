@@ -1,0 +1,1 @@
+/eos/atlas/atlascerngroupdisk/phys-top/4tops/ntuples/common-fw_tag212380/preProd/mc16a/SSML/group.phys-top.410080.MadGraphPythia8EvtGen.DAOD_TOPQ1.e4111_s3126_r9364_r9315_p3390.SM4t-212380_mc16a_SS3L_v1_output_root/group.phys-top.15331108._000001.output.root

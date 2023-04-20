@@ -1,0 +1,69 @@
+##################################################
+#    Configuration file for ttH-offline          #
+##################################################
+# Notes:                                         #
+#             				         #
+# Hash demarks the start of a comment            #
+# All settings are "CONFIG param"                #
+# Settings can be altered with command line args #
+#  -o CONFIG param                               #
+# All settings need to be predefined in the code #
+##################################################
+
+#NEvents 10000
+
+### SM4t dictionary
+Dictionaries OffSM4topsTool
+
+###Where to save everything
+OutputDirectory test
+SampleName ttbar_powpyt8
+
+###Sample options
+SampleType MC
+UseLargeJets false
+
+###Which systematics to save, provide a full list
+Systematics EG_SCALE_AF2__1down_Loose,EG_SCALE_ALL__1up_Loose,EG_SCALE_ALL__1down_Loose,EG_RESOLUTION_ALL__1up_Loose,EG_SCALE_AF2__1up_Loose,EG_RESOLUTION_ALL__1down_Loose,CategoryReduction_JET_JER_EffectiveNP_3__1up_Loose,CategoryReduction_JET_JER_EffectiveNP_3__1down_Loose,CategoryReduction_JET_JER_EffectiveNP_1__1up_Loose,CategoryReduction_JET_JER_EffectiveNP_2__1down_Loose,CategoryReduction_JET_JER_EffectiveNP_1__1down_Loose,CategoryReduction_JET_JER_EffectiveNP_2__1up_Loose,CategoryReduction_JET_JER_EffectiveNP_4__1up_Loose,CategoryReduction_JET_JER_EffectiveNP_5__1up_Loose,CategoryReduction_JET_JER_EffectiveNP_5__1down_Loose,CategoryReduction_JET_JER_EffectiveNP_4__1down_Loose,CategoryReduction_JET_JER_EffectiveNP_6__1up_Loose,CategoryReduction_JET_JER_EffectiveNP_7restTerm__1up_Loose,CategoryReduction_JET_JER_EffectiveNP_7restTerm__1down_Loose,CategoryReduction_JET_JER_EffectiveNP_6__1down_Loose,CategoryReduction_JET_JER_DataVsMC_AFII__1up_Loose,CategoryReduction_JET_JER_DataVsMC_AFII__1down_Loose,CategoryReduction_JET_EffectiveNP_Detector2__1down_Loose,CategoryReduction_JET_EffectiveNP_Detector1__1up_Loose,CategoryReduction_JET_EffectiveNP_Detector2__1up_Loose,CategoryReduction_JET_BJES_Response__1down_Loose,CategoryReduction_JET_BJES_Response__1up_Loose,CategoryReduction_JET_EffectiveNP_Detector1__1down_Loose,CategoryReduction_JET_EffectiveNP_Mixed1__1up_Loose,CategoryReduction_JET_EffectiveNP_Mixed2__1down_Loose,CategoryReduction_JET_EffectiveNP_Mixed1__1down_Loose,CategoryReduction_JET_EffectiveNP_Mixed3__1up_Loose,CategoryReduction_JET_EffectiveNP_Mixed3__1down_Loose,CategoryReduction_JET_EffectiveNP_Mixed2__1up_Loose,CategoryReduction_JET_EffectiveNP_Modelling3__1down_Loose,CategoryReduction_JET_EffectiveNP_Modelling4__1down_Loose,CategoryReduction_JET_EffectiveNP_Modelling3__1up_Loose,CategoryReduction_JET_EffectiveNP_Modelling4__1up_Loose,CategoryReduction_JET_EffectiveNP_Modelling1__1down_Loose,CategoryReduction_JET_EffectiveNP_Modelling2__1down_Loose,CategoryReduction_JET_EffectiveNP_Modelling1__1up_Loose,CategoryReduction_JET_EffectiveNP_Modelling2__1up_Loose,CategoryReduction_JET_EffectiveNP_Statistical4__1down_Loose,CategoryReduction_JET_EffectiveNP_Statistical3__1up_Loose,CategoryReduction_JET_EffectiveNP_Statistical3__1down_Loose,CategoryReduction_JET_EffectiveNP_Statistical4__1up_Loose,CategoryReduction_JET_EffectiveNP_Statistical5__1up_Loose,CategoryReduction_JET_EffectiveNP_Statistical5__1down_Loose,CategoryReduction_JET_EffectiveNP_Statistical6__1down_Loose,CategoryReduction_JET_EffectiveNP_Statistical6__1up_Loose,CategoryReduction_JET_EffectiveNP_Statistical2__1up_Loose,CategoryReduction_JET_EffectiveNP_Statistical2__1down_Loose,CategoryReduction_JET_EffectiveNP_Statistical1__1up_Loose,CategoryReduction_JET_EffectiveNP_Statistical1__1down_Loose,CategoryReduction_JET_EtaIntercalibration_TotalStat__1up_Loose,CategoryReduction_JET_EtaIntercalibration_TotalStat__1down_Loose,CategoryReduction_JET_EtaIntercalibration_NonClosure_posEta__1up_Loose,CategoryReduction_JET_EtaIntercalibration_NonClosure_2018data__1up_Loose,CategoryReduction_JET_EtaIntercalibration_NonClosure_posEta__1down_Loose,CategoryReduction_JET_EtaIntercalibration_NonClosure_2018data__1down_Loose,CategoryReduction_JET_EtaIntercalibration_NonClosure_negEta__1up_Loose,CategoryReduction_JET_EtaIntercalibration_NonClosure_highE__1down_Loose,CategoryReduction_JET_EtaIntercalibration_NonClosure_highE__1up_Loose,CategoryReduction_JET_EtaIntercalibration_Modelling__1down_Loose,CategoryReduction_JET_EtaIntercalibration_Modelling__1up_Loose,CategoryReduction_JET_EtaIntercalibration_NonClosure_negEta__1down_Loose,CategoryReduction_JET_Flavor_Response__1up_Loose,CategoryReduction_JET_Flavor_Composition__1down_Loose,CategoryReduction_JET_Flavor_Composition__1up_Loose,CategoryReduction_JET_Flavor_Response__1down_Loose,CategoryReduction_JET_Pileup_PtTerm__1down_Loose,CategoryReduction_JET_Pileup_RhoTopology__1down_Loose,CategoryReduction_JET_Pileup_RhoTopology__1up_Loose,CategoryReduction_JET_Pileup_PtTerm__1up_Loose,CategoryReduction_JET_Pileup_OffsetMu__1up_Loose,CategoryReduction_JET_Pileup_OffsetNPV__1up_Loose,CategoryReduction_JET_Pileup_OffsetNPV__1down_Loose,CategoryReduction_JET_Pileup_OffsetMu__1down_Loose,CategoryReduction_JET_SingleParticle_HighPt__1down_Loose,CategoryReduction_JET_SingleParticle_HighPt__1up_Loose,CategoryReduction_JET_RelativeNonClosure_AFII__1up_Loose,CategoryReduction_JET_PunchThrough_AFII__1up_Loose,CategoryReduction_JET_RelativeNonClosure_AFII__1down_Loose,CategoryReduction_JET_PunchThrough_AFII__1down_Loose,MET_SoftTrk_ResoPara_Loose,MET_SoftTrk_ScaleUp_Loose,MET_SoftTrk_ScaleDown_Loose,MET_SoftTrk_ResoPerp_Loose,MUON_MS__1down_Loose,MUON_SAGITTA_RESBIAS__1down_Loose,MUON_SAGITTA_RESBIAS__1up_Loose,MUON_ID__1up_Loose,MUON_ID__1down_Loose,MUON_MS__1up_Loose,MUON_SCALE__1up_Loose,MUON_SCALE__1down_Loose,MUON_SAGITTA_RHO__1down_Loose,MUON_SAGITTA_RHO__1up_Loose,nominal_Loose
+
+###Or provide a file
+SystematicsFromFile false
+SystematicsFile None
+
+###Calculate a normalisation weight from
+###totalEventsWeighted,Cutflow or none
+Normalisation totalEventsWeighted
+
+###Provide a file to configure the weights to save
+WeightsFile weights.SSML.txt
+
+###Can choose to provide a list of variables to decorate onto the event
+VariableListToDecorate VariablesToRead.SSML.txt
+
+###Save all variables decorated onto the event
+SaveAllObjectDecorations true
+###Otherwise save variables listed in file
+#VariablesToSaveFile VariablesToSave.SSML.txt
+
+CreateOutputFileFirst true
+
+SaveDefaultVariables mcChannelNumber,runNumber,eventNumber,jet_pt,jet_eta,jet_phi,jet_e,jet_jvt,el_pt,el_eta,el_phi,el_e,el_charge,mu_pt,mu_eta,mu_phi,mu_e,mu_charge,met_met,met_phi
+
+###Define the regions of the form Name:"cut expression",Name2:"cut expression"
+###Regions ljets5j:"nJets == 5",ljets6j:"nJets == 6",ljets7j:"nJets == 7",ljets8j:"nJets == 8",ljets9j:"nJets == 9",ljetsge10j:"nJets > 9"
+
+Regions 2lss3lge1DL1r:"(SSee || SSmm || SSem  || eee || eee_Zveto || eem || eem_Zveto || emm || emm_Zveto || mmm || mmm_Zveto ) && nBTags_DL1r_77 >= 1"
+##################################################
+# TOOL configuration				 #
+#      						 #
+# Notes:					 #
+# 						 #
+# Tools in ToolManager have a given setting key  #
+# Set key to true to run the tool                #
+# Additional options may also be set here        #
+##################################################
+
+Dictionaries OffSM4topsTool
+
+AddSSMLVar.TurnOn true
+

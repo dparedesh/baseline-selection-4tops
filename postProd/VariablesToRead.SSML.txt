@@ -1,0 +1,162 @@
+jet char jet_passfjvt
+jet float jet_DL1
+jet float jet_DL1r
+jet char jet_isbtagged_DL1r_60
+jet char jet_isbtagged_DL1r_70
+jet char jet_isbtagged_DL1r_77
+jet char jet_isbtagged_DL1r_85
+jet int jet_tagWeightBin_DL1r_Continuous
+jet char jet_isbtagged_DL1_60
+jet char jet_isbtagged_DL1_70
+jet char jet_isbtagged_DL1_77
+jet char jet_isbtagged_DL1_85
+jet int jet_tagWeightBin_DL1_Continuous
+electron char el_isTight
+muon char mu_isTight
+int randomRunNumber
+int nPrimaryVtx
+int nBTags_DL1r_60
+int nBTags_DL1r_70
+int nBTags_DL1r_77
+int nBTags_DL1r_85
+int nBTags_DL1_60
+int nBTags_DL1_70
+int nBTags_DL1_77
+int nBTags_DL1_85
+int nElectrons
+int nMuons
+int nJets
+float HT_all
+float HT_jets
+int TopHeavyFlavorFilterFlag
+float GenFiltHT
+float HT_jets
+float HT_all
+float mJSum
+int nRCJets
+int SSee
+int SSmm
+int SSem
+int eee
+int eem
+int eem
+int emm
+int mmm
+int eee_Zveto
+int eem_Zveto
+int eem_Zveto
+int emm_Zveto
+int mmm_Zveto
+electron char    el_isTight
+electron char    el_ECIDS
+electron int el_true_pdg
+electron int     el_true_origin
+electron int     el_true_type
+electron int     el_true_firstEgMotherTruthType
+electron int     el_true_firstEgMotherTruthOrigin
+electron int     el_true_firstEgMotherPdgId
+electron int el_truthPdgId
+electron float   el_MeeCO
+electron float   el_PromptLeptonVeto
+electron float   el_RadiusCO
+electron float   el_bestmatchSiTrackD0
+electron float   el_bestmatchSiTrackEta
+electron float   el_bestmatchSiTrackPhi
+electron float   el_bestmatchSiTrackPt
+electron float   el_bestmatchSiTrackQ
+electron float el_bestmatchSiTrackZ0
+electron float   el_closestSiTrackD0
+electron float   el_closestSiTrackEta
+electron float   el_closestSiTrackPhi
+electron float   el_closestSiTrackPt
+electron float   el_closestSiTrackQ
+electron float   el_closestSiTrackZ0
+electron float   el_closestSiTrackeIL
+electron float   el_closestSiTracknIL
+electron float   el_closestSiTracknNIL
+electron float   el_deltaPhi2
+electron float   el_leadSubleadDeta
+electron float   el_leadSubleadDphi
+electron float el_leadSubleadDr
+electron float   el_leadTrackPt
+electron float   el_separationMinDCT
+electron float el_subleadTrackPt
+electron float   el_sumTrackPt
+muon char mu_isTight
+muon int mu_true_pdg
+muon int mu_true_type
+muon int mu_true_origin
+muon float mu_PromptLeptonVeto
+float lep_0_pt
+float lep_0_eta
+float lep_0_phi
+float lep_0_charge
+float lep_0_e
+float lep_1_pt
+float lep_1_eta
+float lep_1_phi
+float lep_1_charge
+float lep_1_e
+float lep_2_pt
+float lep_2_eta
+float lep_2_phi
+float lep_2_charge
+float lep_2_e
+electron float el_ECIDSResult
+muon float mu_delta_z0_sintheta
+muon float mu_d0sig
+electron float el_delta_z0_sintheta
+electron float el_d0sig
+int nRCJetsM100
+char HLT_2mu14
+char HLT_e24_lhmedium_L1EM20VH
+char HLT_e60_lhmedium
+char HLT_e120_lhloose
+char HLT_2e12_lhloose_L12EM10VH
+char HLT_e7_lhmedium_mu24
+char HLT_mu50
+char HLT_2mu10
+char HLT_mu18_mu8noL1
+char HLT_e60_lhmedium_nod0
+char HLT_e140_lhloose_nod0
+char HLT_2e17_lhvloose_nod0
+char HLT_e17_lhloose_nod0_mu14
+char HLT_e7_lhmedium_nod0_mu24
+char HLT_2e24_lhvloose_nod0
+char HLT_e17_lhloose_nod0_mu14
+char HLT_e7_lhmedium_nod0_mu24
+char HLT_e60_lhmedium_nod0
+char HLT_2e17_lhvloose_nod0_L12EM15VHI
+char HLT_e17_lhloose_nod0_mu14
+char HLT_e7_lhmedium_nod0_mu24
+char HLT_e7_lhmedium_nod0_mu24
+muon char mu_isDLTMatch
+muon char mu_isSLTMatch
+electron char el_trigMatch_HLT_e24_lhmedium_L1EM20VH
+electron char el_trigMatch_HLT_e60_lhmedium
+electron char el_trigMatch_HLT_e120_lhloose
+electron char el_trigMatch_HLT_e60_lhmedium_nod0
+electron char el_trigMatch_HLT_e140_lhloose_nod0
+electron char el_isDLTMatch
+int SSee
+int SSee
+int SSmm
+int SSmm
+int SSem
+int SSem
+int eee
+int eee
+int eem
+int eem
+int emm
+int emm
+int mmm
+int mmm
+int eee_Zveto
+int eee_Zveto
+int eem_Zveto
+int eem_Zveto
+int emm_Zveto
+int emm_Zveto
+int mmm_Zveto
+int mmm_Zveto
