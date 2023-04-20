@@ -136,7 +136,7 @@ To produce the mini-ntuples using the following command:
 
 
 ## Running the post-production
-:warning: **TO BE UPDATED**
+
 
 Paolo created an offline-wrapper in his branch which you can checkout by
 
@@ -184,72 +184,7 @@ The required config files are 'weights.txt', 'VariablesToRead.txt', 'VariablesTo
 
 
 
-## Using ttTRF
-:warning: **TO BE UPDATED**
 
-The code to use Tag Rate Functions (TRF) is also not yet in the master (20.11.18). If you want to use it you can check the following branch
-
-```
-https://gitlab.cern.ch/atlasphys-top/xs/4tops/frameworks/common-framework/blob/user/gpanizzo/ttTRFdev/Framework/OffSM4topsTool/README.md
-```
-
-Compiling the tool the tool is similar to prevous steps but with some preparational steps. A [README](https://gitlab.cern.ch/atlasphys-top/xs/4tops/frameworks/common-framework/blob/user/gpanizzo/ttTRFdev/Framework/OffSM4topsTool/README.md) is also available.
-
-First check not to have any remainder piece of old TtTRF code anywhere else, i.e. you should get
-
->>>
-[USER common-framework]$ cd Framework/TTHbbAnalysis/  
-[USER TTHbbAnalysis]$ grep -R "TtTRF"  
-Dockerfile:COPY TtTRF          	     source/TtTRF
->>>
-
-(you can remove also this last occurrence, and maybe anybody is volunteering 
-to ask for a merge request of our fork of TTHbbAnalysis with everything stripped like here shown?)
-
-Then just follow instructions for the offline code, BUT using the PackageFilter inside this folder:
-```
-cd common-framework #!!
-mkdir build  #!!
-cd build  #!!
-asetup AnalysisTop,21.2.83 || echo ignore alrb  #!! (or --restore from the 2nd  time)
-cmake -DATLAS_PACKAGE_FILTER_FILE=../Framework/OffSM4topsTool/PackageFilters/offline_packages.txt ../Framework #!!
-cmake --build ./ #!!
-source */setup.sh #!!
-```
----
-
-## BDT implementation in 1LOS 
-:warning: **TO BE UPDATED**
-
-The framework supports the implementation of BDT score for the 4tops 1LOS channel. The BDTs are assumed to be trained semi-inclusively, i.e. inclusive in b-jets multiplicity (3bi) but exclusive in jet multiplicity (8je, 9je and 10ji for 1l, and 6je, 7je and 8ji for 2l), using a 3-fold cross-validation procedure based in  events with different modulo 3 event numbers. The implemented BDT score variables are named `BDT_1l_score` and `BDT_2l_score`, and they are initialized to be equal to -999 before being calculated.
-
-The following options are implemented in the SM4t-offline script, here the most up-to-date recommendation (set 1.3): 
-```
-             AddBDT1LOS.TurnOn:	true
-                              	(Tool to include the BDT score)
-         AddBDT1LOS.XMLpath_1l:	/eos/atlas/atlascerngroupdisk/phys-top/4tops2019/BDTXMLs/BDT_050919_1l_set13
-                              	(Path to the 1l BDT XML files)
-         AddBDT1LOS.XMLpath_2l:	/eos/atlas/atlascerngroupdisk/phys-top/4tops2019/BDTXMLs/BDT_050919_2l_set13
-                              	(Path to the 2l BDT XML files)
-            AddBDT1LOS.Vars_1l:	HT_all,jet_pt_0_:jet_pt[0],nJets/I,Centrality_all,dRjj_Avg,dRbb_MindR_MV2c10_70,dRbl_MindR_MV2c10_70,Mjjj_MindR:Mjjj_MindR_new,Mbbb_Avg_MV2c10_70,Mbb_MinM_MV2c10_70,nRCJetsM100/I,Sum__rcjet_d12_:Sum$(rcjet_d12),Sum__rcjet_d23_:Sum$(rcjet_d23),mtw,met_met,Sum__jet_pcb_MV2c10_btag_ordered_T__Iteration__6__:Sum$(jet_pcb_MV2c10_btag_ordered*(Iteration$<6))
-                              	(List of variables used by the 1l BDT separated by commas)
-            AddBDT1LOS.Vars_2l: HT_all,jet_pt_0_:jet_pt[0],nJets/I,Centrality_all,dRjj_Avg,dRbb_MindR_MV2c10_70,dRbl_MindR_MV2c10_70,Mjjj_MindR:Mjjj_MindR_new,Mbbb_Avg_MV2c10_70,Mbb_MinM_MV2c10_70,nRCJetsM100/I,Sum__rcjet_d12_:Sum$(rcjet_d12),Sum__rcjet_d23_:Sum$(rcjet_d23),met_met,Sum__jet_pcb_MV2c10_btag_ordered_T__Iteration__6__:Sum$(jet_pcb_MV2c10_btag_ordered*(Iteration$<6))	
-                              	(List of variables used by the 2l BDT separated by commas)
-```
-
-The `AddBDT1LOS.XMLpath_1l/2l` option is used to define the path of the xml files for the 1l or 2l BDT. The xml files should then respect the following name convention `TMVA_4tops_<channel>_<region>_cross_val_sample_<0/1/2>_BDTG.weights.xml` where `<channel>` refers to either 1l or 2l, `<region>` to the semi-inclusive region (e.g. `9je3bi`) and `<0/1/2>` corresponds to the modulo%3==0 events-trained (0), modulo%3==1 events-trained (1) and modulo%3==2 events-trained (2) xml files.
-
-The `AddBDT1LOS.Vars_1l/2l` option is used to define the list of variables separated by commas for the 1l or 2l BDT reading. They should be defined using the following format `<name>:<bdt name>/<type>` where `<name>` is the name of the event-level variable defined in the framework, `<bdt name>` is the name of the corresponding variable as defined in the xml file, amd `<type>` being the type of the variable : '/F' for float and '/I' for integer. If no '<bdt name>' is defined, it is assumed to be equaled to `<name>`. If no '<type>' is defined, the variable is considered as float by default. 
-
-Example of list of variables definition : 
-```
-AddBDT1LOS.Vars_1l HT_jets,mJSum,nBTags_MV2c10_77/I,nJets/I,nRCJets/I,jetpt0:jet_pt[0],jetpt1:jet_pt[1],jetpt2:jet_pt[2],jetpt3:jet_pt[3]
-```
-
-*Important note:* 
- * The implementation only supports float or integer **event-level** variable for '<name>'.
- * Since the list of variables is defined in a comma-separated string, the use of commas should be avoided in the names of the variable. 
- * Since ':' is used to create the correspondence between the variable in the ntuples and in the xml file, the use of ':' should be avoided in the names of the variable.
  
 ## Framework code modifications
 
@@ -278,7 +213,7 @@ This reduces merge problems and it's generally a nice starting point for good di
 as little as possible, preferably not at all.
 
 ## Updating the TTHbb submodule
-:warning: **TO BE UPDATED**
+
 
 In the current set-up, the TTHbb submodule points to our fork of that repository, so we are responsible for updating it, although it is not necessary to do this too often. There are multiple workflows of how to do it..here's the one I've been using:
 
