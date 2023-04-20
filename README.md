@@ -7,7 +7,6 @@
 ##### Ntuple Pre-production
 ##### Ntuple Post-production
 ##### Running the post-production
-##### Using ttTRF
 ##### Framework code modifications
 ##### Updating the TTHbb submodule
 
@@ -114,8 +113,6 @@ to store the output ntuples (*destSE*, leave that empty to use the scratch area)
 
 
 ## Ntuple Post-production
-
-:warning: **FRAMEWORK IS STILL NOT UPDATED FOR OFFLINE SAMPLES   -->  TO BE UPDATED**
 
 The ntuple post-production refers to the generation of mini-ntuples for dedicated analysis using the pre-produced
 ntuple in input. This includes the addition of new variables from dedicated tools (BDTs, Fake, ttTRF, etc) and
