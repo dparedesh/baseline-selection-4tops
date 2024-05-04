@@ -1,34 +1,21 @@
-# common-framework
-
-## Structure
-##### Introduction
-##### Useful links
-##### Download the framework
-##### Ntuple Pre-production
-##### Ntuple Post-production
-##### Running the post-production
-##### Framework code modifications
-##### Updating the TTHbb submodule
-
----
 
 ## Introduction
 
-This project contains the framework of the BSM 4tops analysis for the ntuples production for both 1L/2LOS and 2LSS/3L channels.
-This project was forked from the SM 4tops analysis framework ([link](https://gitlab.cern.ch/atlasphys-top/xs/4tops/frameworks/common-framework)).
+This project contains the framework of the $t\bar tH/A \rightarrow t\bar tt\bar t$ analysis for the sample preprocessing [1]: cleaning, object calibration, and baseline selection, for both 1L/2LOS and 2LSS/3L channels.
+The original project was forked from the SM $t\bar tt\bar t$ analysis framework ([link](https://gitlab.cern.ch/atlasphys-top/xs/4tops/frameworks/common-framework)), and fully migrated to use the latest recommendation for jets reconstruction using [particle flow](https://arxiv.org/abs/1703.10485) objets.
 
 It is currently structured as follows:
-* *Framework*: Directory containing the TTHbb framework and the SM4tops-related packages.
-* *preProd*: Python scripts and config files to be used for the ntuple pre-production.
-* *postProd*: Python scripts and config files to be used for the ntuple post-production.
+* **Framework**: Directory containing the TTHbb framework and the SM $t\bar tt\bar t$-related packages.
+* **preProd**: Python scripts and config files to be used for the ntuple pre-production: data cleaning, basic selection, object calibration. They run in the [LHC Computing Grid](https://home.cern/science/computing/grid). 
+* **postProd**: Python scripts and config files to be used for the ntuple post-production: final selection, custom variables, final weights.
 
-## Useful links
+### Useful links
 
 * SM4tops twiki: https://twiki.cern.ch/twiki/bin/view/AtlasProtected/SMFourTopsXS13TeV
 * TTHbb git page: https://gitlab.cern.ch/atlasHTop/TTHbbAnalysis/
 * Release 21 software tutorial: https://atlassoftwaredocs.web.cern.ch/ABtutorial/
 * AnalysisTop tutorial: https://twiki.cern.ch/twiki/bin/viewauth/AtlasProtected/AnalysisTopTutorials
-* Git tutorial: https://www.atlassian.com/git/
+
 
 ## Download the framework
 
