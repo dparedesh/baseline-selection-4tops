@@ -42,10 +42,10 @@ rm Framework/TTHbbAnalysis/CMakeLists.txt
 
 ## Ntuple Pre-production
 
-The ntuple pre-production refers to the production of the MC and data ntuples from the DAOD derivations.
+The ntuple pre-production refers to the production of the MC and data ntuples from the DxAOD derivations.
 It includes the extraction of the objects needed for the analysis (e.g. electrons, muons, jets, etc) using
 the object definitions specified in the config files. It also extracts various useful variables needed for
-the different studies (e.g. Monte-Carlo truth informations).
+the different studies (e.g. Monte-Carlo truth information).
 The events are also pre-skimmed according to the pre-selections specified in the config files.
 All the systematic trees/weights are also automatically computed when specified in the config files.
 
@@ -61,28 +61,29 @@ cmake ../Framework
 cmake --build ./
 source */setup.sh
 ```
-The AnalysisBase version needs to be compatible with the version used in the TTHbbAnalysis framework. 
+The AnalysisBase version must be compatible with the version used in the TTHbbAnalysis framework. 
 If the compilation fails, retry `cmake --build ./`. 
 If you want to pass commands to the native compiler (e.g. the numbers of cores used for the compilation) you can do `cmake --build ./ -- -j N` where N is the number of cores. 
-Alternatively you could invoke the compiler more directly by doing `make -j N` instead.
+Alternatively, you could invoke the compiler more directly by doing `make -j N` instead.
 
 One can then simply set the environment back up by doing the following:
+
 ```
 cd build/
 asetup --restore
 source */setup.sh
 ```
 
-The python script and the config files for the ntuple pre-production are kept inside the `preProd`
-subdirectory. It includes:
+The python script and the config files for the ntuple pre-production are kept inside the `preProd` subdirectory. It includes:
+
 * `cuts_*.txt`: the config files used for the ntuple production,
-* `confGenerator.py`: pythin script used to create automatically the config files,
+* `confGenerator.py`: python script used to create automatically the config files,
 * `[data/mc16*]_SM4tops.py`: python script containing the lists of the input data/MC derivation samples,
 * `updateTOPQ1helper.py`: python script used to create the lists of the input data/MC derivation samples,
-* `01SubmitToGrid_simple.py` and `submitToGrid_*.py`: scripts used to launch ntuples pre-production in the grid,
+* `01SubmitToGrid_simple.py` and `submitToGrid_*.py`: scripts used to launch ntuples pre-production in the LHC Computing Grid,
 * `validation.py`: python script used to compare the output ntuple between different productions,
 * `check_production.py`: python script used to monitor a specific ntuple production in the grid,
-* `check_production.py`: python script used to create a list a command to replicate the grid datasets into a specific grid site.
+* `check_replication.py`: python script used to create a list a command to replicate the grid datasets into a specific grid site.
 
 If you want to produce ntuples locally, you can do the following command:
 ```
@@ -90,23 +91,26 @@ cd preProd/
 top-xaod <config> <list-input-files>
 ```
 `<config>` should be replaced by the name of your config file (e.g. `cuts_mc16a_SM4tops.txt`), and
-`<list-input-files>` should be replaced by either the name on an input DAOD file or the name of
-a txt file that contains a list of input DAOD file names.
+`<list-input-files>` should be replaced by either the name on an input DxAOD file or the name of
+a txt file that contains a list of input DxOD file names.
 
-If you want to launch the ntuple production in the grid, you can use the script `01SubmitToGrid_simple.py`.
-You would have to modify it with your own grid username (*gridUsername*), the destination of the grid site
-to store the output ntuples (*destSE*, leave that empty to use the scratch area), your config files
-(*settingsFile*), the suffix of the output datatsets (*suffix*) and the MC/data samples to process.
+### Running pre-production in the LHC Computing Grid
+
+If you want to launch the ntuple production in the LHC Computing Grid, you can use the script `01SubmitToGrid_simple.py`.
+You would have to modify it with your grid username (`gridUsername`), the destination of the grid site
+to store the output ntuples (`destSE`, leave that empty to use the scratch area), your config files
+(`settingsFile`), the suffix of the output datatsets (`suffix`) and the MC/data samples to process.
 
 
 ## Ntuple Post-production
 
 The ntuple post-production refers to the generation of mini-ntuples for dedicated analysis using the pre-produced
-ntuple in input. This includes the addition of new variables from dedicated tools (BDTs, Fake, ttTRF, etc) and
+ntuples as input. This includes the addition of new variables from dedicated tools (BDTs, Fake, ttTRF, etc) and
 some extra-skimming steps.
 
-For the moment, no official code is supported, but your can use the offline code of the TTHbbAnalysis framework.
+For the moment, you can use the offline code of the TTHbbAnalysis framework.
 First, you need to compile the code as follows:
+
 ```
 mkdir build
 cd build
@@ -116,22 +120,10 @@ cmake --build ./
 source */setup.sh
 ```
 
-To produce the mini-ntuples using the following command:
-
-
 ## Running the post-production
 
+Do the setup from `common-framework` directory, the path to find the python executable in `Framework/OffSM4topsTool/python` (where the code is located)
 
-Paolo created an offline-wrapper in his branch which you can checkout by
-
-```
-git checkout user/psabatin/offline-wrapper
-```
-this branch should be merged in the future and is kept up-to date with the master branch.
-
-After checking out the branch it has to be build as explained in *Ntuple Post-production*.
-
-Then setup, from `common-framework` directory, the path to find the python executable in `Framework/OffSM4topsTool/python` (where the code is located)
 ```
 export PATH=$PATH:$PWD/Framework/OffSM4topsTool/python
 ```
@@ -140,20 +132,18 @@ and run (in any working directory)
 ```
 offline-wrapper.py --samples <sample> --typology  <type> --analysis <analysis> --input-path <input-path>  --output-path <input-path>
 ```
-To know the default settings and the meaning of the settigs, read the comments in `offline-wrapper.py` file,or just type
+To know the default settings and the meaning of the settings, read the comments in `offline-wrapper.py` file, or just type
 
 ```
 offline-wrapper.py -h
 ```
 
-A dedicated [README for the offline wrapper](https://gitlab.cern.ch/atlasphys-top/xs/4tops/frameworks/common-framework/blob/user/psabatin/offline-wrapper/Framework/OffSM4topsTool/python/README.md) is also available 
-
 The advantages of the wrapper are that
 * It checks in the input_path (that can be set very easily to the group eos-area by using the flag --eos-area) if all necessary samples are available and, if rucio is setup, downloads missing samples
 * It provides pre-defined sets of variables that can be used so you do not have to worry about which variable you want
-* It supports all tools such as e.g. ttTRF since it only redirects the input variables in a propper way
-* It still remains fully customable since. For example it only groups variables in a dictionary which is fully customisable
-* It essentially is only made out of the *offlline-wrapper.py* file and the *./lib/Class.py file* and is therefore easy to understand and to adapt
+* It supports all tools such as e.g. ttTRF since it only redirects the input variables in a proper way
+* It remains fully customizable since. For example it only groups variables in a dictionary which is fully customisable
+* It essentially is only made out of the `offlline-wrapper.py` file and the *./lib/Class.py file* and is therefore easy to understand and to adapt
 
 
 If you do not want to use the wrapper you can produce mini-ntuples by
@@ -163,11 +153,8 @@ cd run/
 ttH-offline configuration.txt <list-input-files>
 ```
 
-Examples of config scripts are avaialable in `postProd/` subdirectory or in Framework/TTHbbAnalysis/OfflineTTHbb/share/.
-The required config files are 'weights.txt', 'VariablesToRead.txt', 'VariablesToSave.txt' and 'configuration.txt'
-
-
-
+Examples of config scripts are available in `postProd/` subdirectory or in Framework/TTHbbAnalysis/OfflineTTHbb/share/.
+The required config files are 'weights.txt', 'VariablesToRead.txt', 'VariablesToSave.txt', and 'configuration.txt'
 
  
 ## Framework code modifications
