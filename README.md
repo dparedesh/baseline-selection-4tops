@@ -1,7 +1,7 @@
 
 ## Introduction
 
-This project contains the framework of the $t\bar tH/A \rightarrow t\bar tt\bar t$ analysis for the sample preprocessing [1]: cleaning, object calibration, and baseline selection, for both 1L/2LOS and 2LSS/3L channels.
+This project contains the framework of the $t\bar tH/A \rightarrow t\bar tt\bar t$ analysis [1] for the sample preprocessing: cleaning, object calibration, and baseline selection, for both 1L/2LOS and 2LSS/3L channels.
 The original project was forked from the SM $t\bar tt\bar t$ analysis framework ([link](https://gitlab.cern.ch/atlasphys-top/xs/4tops/frameworks/common-framework)), and fully migrated to use the latest recommendation for jets reconstruction using [particle flow](https://arxiv.org/abs/1703.10485) objets.
 
 It is currently structured as follows:
@@ -17,7 +17,7 @@ It is currently structured as follows:
 * AnalysisTop tutorial: https://twiki.cern.ch/twiki/bin/viewauth/AtlasProtected/AnalysisTopTutorials
 
 
-## Download the framework
+## Getting the framework
 
 The framework can be downloaded as follows:
 ```
@@ -40,7 +40,7 @@ In order for the CI in this repository to run successfully, the following comman
 rm Framework/TTHbbAnalysis/CMakeLists.txt
 ```
 
-## Ntuple Pre-production
+## How to run the ntuple pre-production?
 
 The ntuple pre-production refers to the production of the MC and data ntuples from the DxAOD derivations.
 It includes the extraction of the objects needed for the analysis (e.g. electrons, muons, jets, etc) using
@@ -94,7 +94,7 @@ top-xaod <config> <list-input-files>
 `<list-input-files>` should be replaced by either the name on an input DxAOD file or the name of
 a txt file that contains a list of input DxOD file names.
 
-### Running pre-production in the LHC Computing Grid
+### Running the pre-production in the LHC Computing Grid
 
 If you want to launch the ntuple production in the LHC Computing Grid, you can use the script `01SubmitToGrid_simple.py`.
 You would have to modify it with your grid username (`gridUsername`), the destination of the grid site
@@ -102,7 +102,7 @@ to store the output ntuples (`destSE`, leave that empty to use the scratch area)
 (`settingsFile`), the suffix of the output datatsets (`suffix`) and the MC/data samples to process.
 
 
-## Ntuple Post-production
+## How to run the ntuple post-production?
 
 The ntuple post-production refers to the generation of mini-ntuples for dedicated analysis using the pre-produced
 ntuples as input. This includes the addition of new variables from dedicated tools (BDTs, Fake, ttTRF, etc) and
@@ -120,7 +120,7 @@ cmake --build ./
 source */setup.sh
 ```
 
-## Running the post-production
+### Running the post-production
 
 Do the setup from `common-framework` directory, the path to find the python executable in `Framework/OffSM4topsTool/python` (where the code is located)
 
@@ -174,22 +174,21 @@ In case you are running into problems with the submodules such as TTHbbAnalysis 
 to update the submodule from remote.
 
 Once you're done with your modifications and you tested it locally, you can then request to merge the
-branch into the master branch using the gitlab web interface. 
+branch into the master branch using the GitLab web interface. 
 It is recommended to create a merge request with `WIP:` in front of the title as soon as possible 
 so that other people can already see and discuss the changes being made. 
 This reduces merge problems and it's generally a nice starting point for good discussions.
 
-**Important**: since we are trying to separate the SM4tops code from the TTHbb framework as much as possible
- in order to be as independent as possible from the TTHbb team, we ask every analyzer to modify the TTHbb framework 
-as little as possible, preferably not at all.
+> [!IMPORTANT]
+> Since we are trying to separate the SM4tops code from the TTHbb framework as much as possible in order to be as independent as possible from the TTHbb team, we ask every analyzer to modify the TTHbb framework  as little as possible, preferably not at all.
 
 ## Updating the TTHbb submodule
 
-
-In the current set-up, the TTHbb submodule points to our fork of that repository, so we are responsible for updating it, although it is not necessary to do this too often. There are multiple workflows of how to do it..here's the one I've been using:
+In the current set-up, the TTHbb submodule points to our fork of that repository, so we are responsible for updating it, although it is unnecessary to do this too often. There are multiple workflows of how to do it..here's the one I've been using:
 
 1. get into the right directory (so that we're using the git of the submodule): `cd common-framework/Framework/TTHbbAnalysis`
 2. check that you've already added the "upstream" original package (only once) `git remote -v`, which should result in
+   
 ```
 origin	ssh://git@gitlab.cern.ch:7999/atlasphys-top/xs/4tops/frameworks/TTHbbAnalysis.git (fetch)
 origin	ssh://git@gitlab.cern.ch:7999/atlasphys-top/xs/4tops/frameworks/TTHbbAnalysis.git (push)
@@ -199,23 +198,25 @@ upstream	ssh://git@gitlab.cern.ch:7999/atlasHTop/TTHbbAnalysis.git (push)
 If you're missing the `upstream` part, do `git remote add upstream ssh://git@gitlab.cern.ch:7999/atlasHTop/TTHbbAnalysis.git`.
 
 3. We want to update master so let's go there: `git checkout master`
-4. Update it: `git pull upstream master`. This should pull everything nicely from the original TTHbb master branch, which will **very likely** result in a merge conflict which we need to resolve because we changed the CMakeLists a bit. Resolve the merge conflict in your preferred way [like so](https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/) or through gitLab, for example.
-5. Make sure the merged and updated master is in our remote fork (on gitlab), so if you resolved the merge conflict locally, you need to push the changes to `origin`: `git push origin master`, if you did it through gitLab it should already be there.
+4. Update it: `git pull upstream master`. This should pull everything nicely from the original TTHbb master branch, which will **very likely** result in a merge conflict which we need to resolve because we changed the CMakeLists a bit. Resolve the merge conflict in your preferred way [like so](https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/) or through GitLab, for example.
+5. Make sure the merged and updated master is in our remote fork (on gitlab), so if you resolved the merge conflict locally, you need to push the changes to `origin`: `git push origin master`, if you did it through GitLab it should already be there.
 6. Create a merge request to merge the newly updated master with the branch we're actually using `group/4Top/master`. (This step might be removed as we might just use the master branch directly in the future)
 7. Checkout and pull the group branch locally: `git checkout group/4Top/master` and `git pull origin group/4Top/master`
 8. Done
 
 This sounds fairly "elaborate", but it really does not take much time and might even be simplified quite a bit in the future. On the other hand, this allows us to be very independent from the TTHbb team, do all the merge conflict resolution on our side and it allows us to use their framework without us disturbing them.
 
-<!--
-** Important **: Because we use the TTHbbAnalysis framework as a submodule, one need to keep in mind that all
+> [!IMPORTANT]
+>Because we use the TTHbbAnalysis framework as a submodule, one needs to keep in mind that all
 the commits will be separate based on which repository they are applied to. That means that any modification
 inside the TTHbb framework will be propagated in the TTHbb repository, not in the 4tops repository.
-
-One can update the TTHbb submodule to a newer version inside the 4tops repository. To do so, just pull the git
+>One can update the TTHbb submodule to a newer version inside the 4tops repository. To do so, just pull the git
 project inside the TTHbbAnalysis subdirectory. Then go to the parent directory and commit the update by doing
 `git add TTHbbAnalysis`.
-
-You can also modify the TTHbb framework by creating a branch as described above, inside the TTHbbAnalysis
+>You can also modify the TTHbb framework by creating a branch as described above, inside the TTHbbAnalysis
 subdirectory. The merging request would then be approved by the TTHbb team.
--->
+
+
+## Official results obtained with this framework
+
+
