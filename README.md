@@ -219,4 +219,11 @@ subdirectory. The merging request would then be approved by the TTHbb team.
 
 ## Official results obtained with this framework
 
+The framework in this repository has been used to preprocess the real data and samples of simulated events for the following paper publications:
+
+
+1. ATLAS Collaboration, *Search for* $t\bar tH/A \rightarrow t\bar tt\bar t$ *production in the multilepton final state in proton–proton collisions at* $\sqrt{s}=13$ *TeV with the ATLAS detector*, [JHEP 07 (2023) 203](https://inspirehep.net/literature/2175533).
+2. ATLAS Collaboration, *Constraints on dark matter models involving an* $s$*-channel mediator with the ATLAS detector in* $pp$ *collisions at* $\sqrt{s}=13$ *TeV*, [arXiv:2404.15930 [hep-ex]](https://arxiv.org/abs/2404.15930).
+3. ATLAS Collaboration, *Search for top-quark-associated production of heavy scalar or pseudoscalar in* $pp$ *collisions at 13 TeV*, [ATLAS-CONF-2024-002](https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2024-002/).
+
 
